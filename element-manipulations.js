@@ -18,6 +18,8 @@ Function index
 	* Head styles
 		headStyleAppend(css) - Append new style block to head
 		headStyleAppendAll(cssArray) - Append new styles array blocks to head
+		headStyleElementHide(selector) - Append new style block to head to hide element
+		headStyleElementHideAll(selectorArray) - Append new styles block to head to hide elements array
 	* Inversion styles
 		htmlInvertColors() - Invert page colors
 		htmlInvertColorsPlusHueRotate() - Invert and hue rotate colors
@@ -129,6 +131,36 @@ function headStyleAppendAll(cssArray) {
 	for (const css of cssArray) {
 		headStyleAppend(css);
 	}
+}
+
+/*
+ * Append new style block to head to hide element
+ */
+function headStyleElementHide(selector) {
+	const cssHideElement = `
+		${selector} {
+			display: none !important;
+		}
+	`;
+
+	headStyleAppend(cssHideElement);
+}
+
+/*
+ * Append new styles block to head to hide elements array
+ */
+function headStyleElementHideAll(selectorArray) {
+	var cssHideElements = ``;
+	for (const selector of selectorArray) {
+		const cssHideSingleElement = `
+			${selector} {
+				display: none !important;
+			}
+		`;
+		cssHideElements += cssHideSingleElement;
+	}
+
+	headStyleAppend(cssHideElements);
 }
 
 // ** Inversion styles
