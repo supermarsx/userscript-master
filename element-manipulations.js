@@ -21,6 +21,8 @@ Function index
 	* Inversion styles
 		htmlInvertColors() - Invert page colors
 		htmlInvertColorsPlusHueRotate() - Invert and hue rotate colors
+	* Dark Mode
+		elementForceDarkModeMethod1(selector) - Force specific element dark mode, method 1
  */
 
 // ** Selection
@@ -164,11 +166,12 @@ function htmlInvertColorsPlusHueRotate() {
 	headStyleAppend(newInvertedAndRotatedStyle);
 }
 
-/*
- * Force specific element dark mode
- */
+// ** Dark Mode
 
-function elementForceDarkMode(selector) {
+/*
+ * Force specific element dark mode, method 1
+ */
+function elementForceDarkModeMethod1(selector) {
 	const newForceDarkMode = `
 		${selector} {
 			background: white !important;
