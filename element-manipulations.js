@@ -26,6 +26,7 @@ Function index
 	* Dark Mode
 		elementForceDarkModeMethod1(selector) - Force specific element dark mode, method 1
 		elementForceDarkModeMethod2(selector) - Force specific element dark mode, method 2
+		elementForceDarkModeMethod2All(selectorArray) - Force element array to dark mode, method 2
  */
 
 // ** Selection
@@ -237,4 +238,13 @@ function elementForceDarkModeMethod2(selector) {
 	`;
 
 	headStyleAppend(newForceDarkMode2);
+}
+
+/*
+ * Force element array to dark mode, method 2
+ */
+function elementForceDarkModeMethod2All(selectorArray) {
+	for (const selector of selectorArray) {
+		elementForceDarkModeMethod2(selector);
+	}
 }
