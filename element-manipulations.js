@@ -212,7 +212,7 @@ function elementForceDarkModeMethod1(selector) {
 
 		${selector} {
 			background: white !important;
-		}
+			
 
 		${selector} {
 			filter: invert(1) hue-rotate(180deg) !important;
@@ -227,9 +227,12 @@ function elementForceDarkModeMethod1(selector) {
  */
 function elementForceDarkModeMethod2(selector) {
 	const newForceDarkMode2 = `
+		${selector}, ${selector} a {
+			color: black !important;
+		}
+
 		${selector} {
 			background: white !important;
-			color: black !important;
 		}
 	`;
 
