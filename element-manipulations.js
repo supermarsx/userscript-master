@@ -206,9 +206,12 @@ function htmlInvertColorsPlusHueRotate() {
  */
 function elementForceDarkModeMethod1(selector) {
 	const newForceDarkMode1 = `
+		${selector}, ${selector} a {
+			color: black !important;
+		}
+
 		${selector} {
 			background: white !important;
-			color: black !important;
 		}
 
 		${selector} {
