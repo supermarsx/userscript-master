@@ -20,6 +20,7 @@ Function index
 		headStyleAppendAll(cssArray) - Append new styles array blocks to head
 	* Inversion styles
 		htmlInvertColors() - Invert page colors
+		htmlInvertColorsPlusHueRotate() - Invert and hue rotate colors
  */
 
 // ** Selection
@@ -144,4 +145,21 @@ function htmlInvertColors() {
 	`;
 
 	headStyleAppend(newInvertedStyle);
+}
+
+/*
+ * Invert and hue rotate colors
+ */
+function htmlInvertColorsPlusHueRotate() {
+	const newInvertedAndRotatedStyle = `
+		body {
+			background: white;
+		}
+
+		html, img, video, iframe {
+			filter: invert(1);
+		}
+	`;
+
+	headStyleAppend(newInvertedAndRotatedStyle);
 }
