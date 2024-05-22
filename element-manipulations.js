@@ -28,6 +28,8 @@ Function index
 		elementForceDarkModeMethod1All(selectorArray) - Force element array to dark mode, method 1
 		elementForceDarkModeMethod2(selector) - Force specific element dark mode, method 2
 		elementForceDarkModeMethod2All(selectorArray) - Force element array to dark mode, method 2
+		elementForceDarkModeMethod3(selector) - Force specific element images to dark mode, method 3
+		elementForceDarkModeMethod3All(selectorArray) - Force element array to dark mode, method 3
  */
 
 // ** Selection
@@ -256,5 +258,27 @@ function elementForceDarkModeMethod2(selector) {
 function elementForceDarkModeMethod2All(selectorArray) {
 	for (const selector of selectorArray) {
 		elementForceDarkModeMethod2(selector);
+	}
+}
+
+/*
+ * Force specific element images to dark mode, method 3
+ */
+function elementForceDarkModeMethod3(selector) {
+	const newForceDarkMode3 = `
+	${selector} img {
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
+`;
+
+headStyleAppend(newForceDarkMode3);
+}
+
+/*
+ * Force element array to dark mode, method 3
+ */
+function elementForceDarkModeMethod3All(selectorArray) {
+	for (const selector of selectorArray) {
+		elementForceDarkModeMethod3(selector);
 	}
 }
