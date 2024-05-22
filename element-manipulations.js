@@ -23,6 +23,7 @@ Function index
 		htmlInvertColorsPlusHueRotate() - Invert and hue rotate colors
 	* Dark Mode
 		elementForceDarkModeMethod1(selector) - Force specific element dark mode, method 1
+		elementForceDarkModeMethod2(selector) - Force specific element dark mode, method 2
  */
 
 // ** Selection
@@ -172,7 +173,7 @@ function htmlInvertColorsPlusHueRotate() {
  * Force specific element dark mode, method 1
  */
 function elementForceDarkModeMethod1(selector) {
-	const newForceDarkMode = `
+	const newForceDarkMode1 = `
 		${selector} {
 			background: white !important;
 			color: black !important;
@@ -183,5 +184,19 @@ function elementForceDarkModeMethod1(selector) {
 		}
 	`;
 
-	headStyleAppend(newForceDarkMode);
+	headStyleAppend(newForceDarkMode1);
+}
+
+/*
+ * Force specific element dark mode, method 2
+ */
+function elementForceDarkModeMethod2(selector) {
+	const newForceDarkMode2 = `
+		${selector} {
+			background: white !important;
+			color: black !important;
+		}
+	`;
+
+	headStyleAppend(newForceDarkMode2);
 }
