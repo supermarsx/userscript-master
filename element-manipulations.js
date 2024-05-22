@@ -208,7 +208,7 @@ function htmlInvertColorsPlusHueRotate() {
  */
 function elementForceDarkModeMethod1(selector) {
 	const newForceDarkMode1 = `
-		${selector}, ${selector} a {
+		${selector}, ${selector} a, ${selector} span {
 			color: black !important;
 		}
 
@@ -238,7 +238,7 @@ function elementForceDarkModeMethod1All(selectorArray) {
  */
 function elementForceDarkModeMethod2(selector) {
 	const newForceDarkMode2 = `
-		${selector}, ${selector} a {
+		${selector}, ${selector} a, ${selector} span {
 			color: black !important;
 		}
 
