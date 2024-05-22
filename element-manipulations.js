@@ -163,3 +163,22 @@ function htmlInvertColorsPlusHueRotate() {
 
 	headStyleAppend(newInvertedAndRotatedStyle);
 }
+
+/*
+ * Force specific element dark mode
+ */
+
+function elementForceDarkMode(selector) {
+	const newForceDarkMode = `
+		${selector} {
+			background: white !important;
+			color: black !important;
+		}
+
+		${selector} {
+			filter: invert(1) hue-rotate(180deg) !important;
+		}
+	`;
+
+	headStyleAppend(newForceDarkMode);
+}
