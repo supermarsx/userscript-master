@@ -30,6 +30,9 @@ Function index
 		elementForceDarkModeMethod2All(selectorArray) - Force element array to dark mode, method 2
 		elementForceDarkModeMethod3(selector) - Force specific element images to dark mode, method 3
 		elementForceDarkModeMethod3All(selectorArray) - Force element array to dark mode, method 3
+	* Select tag
+		elementSelectAddOption(selector, option, value) - Add option with value to select element
+		elementSelectAddOptionWait(selector, option, value) - Add option with value but wait for select element to be available
  */
 
 // ** Selection
@@ -266,12 +269,12 @@ function elementForceDarkModeMethod2All(selectorArray) {
  */
 function elementForceDarkModeMethod3(selector) {
 	const newForceDarkMode3 = `
-	${selector} img {
-		filter: invert(1) hue-rotate(180deg) !important;
-	}
-`;
+		${selector} img {
+			filter: invert(1) hue-rotate(180deg) !important;
+		}
+	`;
 
-headStyleAppend(newForceDarkMode3);
+	headStyleAppend(newForceDarkMode3);
 }
 
 /*
@@ -281,4 +284,26 @@ function elementForceDarkModeMethod3All(selectorArray) {
 	for (const selector of selectorArray) {
 		elementForceDarkModeMethod3(selector);
 	}
+}
+
+// ** Select tag
+
+/*
+ * Add option with value to select element
+ */
+function elementSelectAddOption(selector, option, value) {
+	const selectElement = elementSelect(selector);
+	const newOption = document.createElement('option');
+	option.text = option;
+	option.value = value;
+	selectElement.add(newOption);
+}
+
+/*
+ * Add option with value but wait for select element to be available
+ */
+function elementSelectAddOptionWait(selector, option, value) {
+	elementWait(selector).then(function(selector) {
+		elementSelectAddOption(selector, option, value);
+	});
 }
