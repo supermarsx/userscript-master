@@ -33,6 +33,7 @@ Function index
 	* Select tag
 		elementSelectAddOption(selector, option, value) - Add option with value to select element
 		elementSelectAddOptionWait(selector, option, value) - Add option with value but wait for select element to be available
+		elementSelectAddOptionAllWait(selector, option, value) - Add option array with value but wait for select elements to be available (array of objects)
  */
 
 // ** Selection
@@ -306,4 +307,15 @@ function elementSelectAddOptionWait(selector, option, value) {
 	elementWait(selector).then(function(selector) {
 		elementSelectAddOption(selector, option, value);
 	});
+}
+
+/*
+ * Add option array with value but wait for select elements to be available (array of objects)
+ * Array of objects like
+ * [ {selector: 'div', option: 'name', value: 1234}, ...]
+ */
+function elementSelectAddOptionAllWait(selectOptionsArray) {
+	for (const selectOption of selectOptionsArray) {
+		elementSelectAddOptionWait(selectOption.selector, selectOption,option, selectOption.value);
+	}
 }
