@@ -317,6 +317,6 @@ function elementSelectAddOptionWait(selector, option, value) {
 function elementSelectAddOptionAllWait(selectOptionsArray) {
 	for (const selectOption of selectOptionsArray) {
 		console.log(selectOption)
-		elementSelectAddOptionWait(selectOption.selector, selectOption,option, selectOption.value);
+		elementSelectAddOptionWait(selectOption.selector, selectOption.option, selectOption.value);
 	}
 }
