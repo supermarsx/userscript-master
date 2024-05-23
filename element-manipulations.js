@@ -34,6 +34,8 @@ Function index
 		elementSelectAddOption(selector, option, value) - Add option with value to select element
 		elementSelectAddOptionWait(selector, option, value) - Add option with value but wait for select element to be available
 		elementSelectAddOptionAllWait(selectOptionsArray) - Add option array with value but wait for select elements to be available (array of objects)
+	* Events
+		htmlWaitDomLoaded(callback) - Execute function after DOM is loaded
  */
 
 // ** Selection
@@ -293,19 +295,18 @@ function elementForceDarkModeMethod3All(selectorArray) {
  * Add option with value to select element
  */
 function elementSelectAddOption(selector, option, value) {
-	console.log(select, option, value)
-	const selectElement = elementSelect(selector);
+	const element = elementSelect(selector);
 	const newOption = document.createElement('option');
 	newOption.text = option;
 	newOption.value = value;
-	selectElement.add(newOption);
+	element.add(newOption);
 }
 
 /*
  * Add option with value but wait for select element to be available
  */
 function elementSelectAddOptionWait(selector, option, value) {
-	elementWait(selector).then(function(selector) {
+	elementWait(selector).then(function() {
 		elementSelectAddOption(selector, option, value);
 	});
 }
@@ -317,7 +318,68 @@ function elementSelectAddOptionWait(selector, option, value) {
  */
 function elementSelectAddOptionAllWait(selectOptionsArray) {
 	for (const selectOption of selectOptionsArray) {
-		console.log(selectOption)
 		elementSelectAddOptionWait(selectOption.selector, selectOption.option, selectOption.value);
 	}
+}
+
+// ** Events
+
+/*
+ * Execute function after DOM is loaded
+ */
+function htmlWaitDomLoaded(callback) {
+	document.addEventListener('DOMContentLoaded', callback);
+}
+
+// ** Cloning
+
+/*
+ * Clone selector to another selector
+ */
+function elementClone(sourceSelector, destinationSelector) {
+	const sourceElement = elementSelect(sourceSelector);
+	const targetElement = elementSelect(destinationSelector);
+	const clonedContents = sourceElement.cloneNode(true);
+	targetElement.appendChild(clonedContents);
+}
+
+// ** Special Elements
+
+/*
+ * Add buttons to got to bottom and to go to top
+ */
+function elementAddGoToBottomAndTop() {
+	const buttonStyle = `
+	.fast-shortcut {
+		width: 40px;
+		height: 40px;
+		display: block;
+		position: fixed;
+		bottom: 20px;
+		z-index: 99;
+		font-size: 25px;
+		outline: none;
+		background-color: white;
+		color: white;
+		cursor: pointer;
+		padding: 2px;
+	  }
+
+	  .fast-shortcut.first-button {
+		right: 30px;
+	  }
+
+	  .fast-shortcut.second-button {
+		right: 75px;
+	  }
+	`;
+
+	const buttonHtml = document.createElement('div');
+	buttonHtml.innerHTML = `
+		<button onclick="document.body.scrollTop = 0;document.documentElement.scrollTop = 0;" class="fast-shortcut first-button" title="Go to top">↑</button>
+		<button onclick="document.body.scrollTop = document.body.scrollHeight;document.documentElement.scrollTop = document.body.scrollHeight;" class="fast-shortcut second-button" title="Go to bottom">↓</button>
+	`;
+
+	headStyleAppend(buttonStyle);
+	document.body.appendChild(buttonHtml);
 }
