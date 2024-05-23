@@ -33,7 +33,7 @@ Function index
 	* Select tag
 		elementSelectAddOption(selector, option, value) - Add option with value to select element
 		elementSelectAddOptionWait(selector, option, value) - Add option with value but wait for select element to be available
-		elementSelectAddOptionAllWait(selector, option, value) - Add option array with value but wait for select elements to be available (array of objects)
+		elementSelectAddOptionAllWait(selectOptionsArray) - Add option array with value but wait for select elements to be available (array of objects)
  */
 
 // ** Selection
