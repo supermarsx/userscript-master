@@ -295,8 +295,8 @@ function elementForceDarkModeMethod3All(selectorArray) {
 function elementSelectAddOption(selector, option, value) {
 	const selectElement = elementSelect(selector);
 	const newOption = document.createElement('option');
-	option.text = option;
-	option.value = value;
+	newOption.text = option;
+	newOption.value = value;
 	selectElement.add(newOption);
 }
 
