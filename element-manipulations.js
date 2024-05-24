@@ -36,6 +36,10 @@ Function index
 		elementSelectAddOptionAllWait(selectOptionsArray) - Add option array with value but wait for select elements to be available (array of objects)
 	* Events
 		htmlWaitDomLoaded(callback) - Execute function after DOM is loaded
+	* Special elements
+		elementAddGoToBottomAndTop() - Add buttons to got to bottom and to go to top
+	* Auxiliary functions
+ 		isFrame() - Is iframe?
  */
 
 // ** Selection
@@ -382,4 +386,13 @@ function elementAddGoToBottomAndTop() {
 
 	headStyleAppend(buttonStyle);
 	document.body.appendChild(buttonHtml);
+}
+
+// ** Auxiliary functions
+
+/*
+ * Is iframe?
+ */
+function isIframe() {
+	return window !== window.parent;
 }
