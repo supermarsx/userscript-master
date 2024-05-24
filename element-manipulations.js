@@ -182,14 +182,14 @@ function headStyleElementHideAll(selectorArray) {
 /*
  * Invert page colors
  */
-function htmlInvertColors(invertion = 1, tags = 'html, img, video, iframe') {
+function htmlInvertColors(invertion = 1, tags = 'html, img, video, iframe', additionalfilters = '') {
 	const newInvertedStyle = `
 		body {
 			background: white;
 		}
 
 		${tags} {
-			filter: invert(${invertion});
+			filter: invert(${invertion}) ${additionalfilters};
 		}
 	`;
 
@@ -199,14 +199,14 @@ function htmlInvertColors(invertion = 1, tags = 'html, img, video, iframe') {
 /*
  * Invert and hue rotate colors
  */
-function htmlInvertColorsPlusHueRotate(invertion = 1, rotation = '180deg', tags = 'html, img, video, iframe') {
+function htmlInvertColorsPlusHueRotate(invertion = 1, rotation = '180deg', tags = 'html, img, video, iframe', additionalfilters = '') {
 	const newInvertedAndRotatedStyle = `
 		body {
 			background: white;
 		}
 
 		${tags} {
-			filter: invert(${invertion}) hue-rotate(${rotation});
+			filter: invert(${invertion}) hue-rotate(${rotation}) ${additionalfilters};
 		}
 	`;
 
