@@ -39,7 +39,7 @@ Function index
 	* Special elements
 		elementAddGoToBottomAndTop() - Add buttons to got to bottom and to go to top
 	* Auxiliary functions
- 		isFrame() - Is iframe?
+ 		isIframe() - Is iframe?
  */
 
 // ** Selection
