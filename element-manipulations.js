@@ -178,14 +178,14 @@ function headStyleElementHideAll(selectorArray) {
 /*
  * Invert page colors
  */
-function htmlInvertColors() {
+function htmlInvertColors(invertion = 1) {
 	const newInvertedStyle = `
 		body {
 			background: white;
 		}
 
 		html, img, video, iframe {
-			filter: invert(1);
+			filter: invert(${invertion});
 		}
 	`;
 
@@ -195,14 +195,14 @@ function htmlInvertColors() {
 /*
  * Invert and hue rotate colors
  */
-function htmlInvertColorsPlusHueRotate() {
+function htmlInvertColorsPlusHueRotate(invertion = 1, rotation = '180deg') {
 	const newInvertedAndRotatedStyle = `
 		body {
 			background: white;
 		}
 
 		html, img, video, iframe {
-			filter: invert(1) hue-rotate(180deg);
+			filter: invert(${invertion}) hue-rotate(${rotation});
 		}
 	`;
 
