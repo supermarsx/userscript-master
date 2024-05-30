@@ -21,7 +21,7 @@ module.exports = {
   optimization: {
     usedExports: true,
   },
-  mode: 'production',
+  mode: 'none',
   watch: true,
   watchOptions: {
     aggregateTimeout: 200,

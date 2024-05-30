@@ -1,1 +1,1264 @@
-(()=>{"use strict";var e={453:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.checkIsIframe=void 0,t.checkIsIframe=function(){return window!==window.parent}},450:(e,t,n)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.elementCloneToDestination=t.elementClone=void 0;const o=n(793);function l(e){const t=(0,o.elementSelect)(e);return t?t.cloneNode(!0):new Error(`Failed to clone element with selector ${e}`)}t.elementClone=l,t.elementCloneToDestination=function(e,t){const n=l(e);if(n instanceof Error)return console.error(n.message),new Error(`Failed to clone element: ${n.message}`);const r=(0,o.elementSelect)(t);if(!r){const e=`Destination element with selector ${t} not found.`;return console.error(e),new Error(e)}try{r.appendChild(n)}catch(e){const t=`Failed to append cloned element to destination: ${e.message}`;return console.error(t),new Error(t)}}},620:(e,t,n)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.elementInlineStyleHideAll=t.elementInlineStyleAll=void 0;const o=n(286);t.elementInlineStyleAll=function(e){for(const{selector:t,style:n}of e)try{(0,o.elementInlineStyle)(t,n)}catch(e){const n=`Failed to apply style to element with selector ${t}: ${e.message}`;return console.error(n),new Error(n)}},t.elementInlineStyleHideAll=function(e){for(const{selector:t,style:n}of e)try{(0,o.elementInlineStyleHide)(t,n)}catch(e){const n=`Failed to hide element with selector ${t}: ${e.message}`;return console.error(n),new Error(n)}}},88:(e,t,n)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.elementInlineStyleWaitVarAll=t.elementInlineStyleWaitAltAll=t.elementInlineStyleWaitAll=void 0;const o=n(82);t.elementInlineStyleWaitAll=function(e){for(const t of e){const{selector:e,style:n}=t;try{(0,o.elementInlineStyleHideWait)(e,n)}catch(t){const n=`Failed to apply wait style to element with selector ${e}: ${t.message}`;return console.error(n),new Error(n)}}},t.elementInlineStyleWaitAltAll=function(e){for(const t of e){const{selector:e,style:n}=t;try{(0,o.elementInlineStyleHideWaitAlt)(e,n)}catch(t){const n=`Failed to apply alternate wait style to element with selector ${e}: ${t.message}`;return console.error(n),new Error(n)}}},t.elementInlineStyleWaitVarAll=function(e){for(const t of e){const{selector:e,style:n,method:l}=t;try{(0,o.elementInlineStyleHideWaitVar)(e,n,l)}catch(t){const n=`Failed to apply variable wait style to element with selector ${e}, method ${l}: ${t.message}`;return console.error(n),new Error(n)}}}},82:(e,t,n)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.elementInlineStyleHideWaitVar=t.elementInlineStyleHideWaitAlt=t.elementInlineStyleHideWait=t.elementInlineStyleHideWaitMain=t.elementInlineStyleWaitVar=t.elementInlineStyleWaitAlt=t.elementInlineStyleWait=t.elementInlineStyleWaitMain=void 0;const o=n(286),l=n(701);function r(e,t){return(0,l.elementWait)(e).then((function(){return(0,o.elementInlineStyle)(e,t)}))}function i(e,t){return(0,l.elementWaitAlt)(e).then((function(){return(0,o.elementInlineStyle)(e,t)}))}function c(e,t="display: none"){return(0,l.elementWait)(e).then((function(){return(0,o.elementInlineStyleHide)(e,t)}))}function s(e,t="display: none"){return(0,l.elementWaitAlt)(e).then((function(){return(0,o.elementInlineStyleHide)(e,t)}))}t.elementInlineStyleWaitMain=r,t.elementInlineStyleWait=r,t.elementInlineStyleWaitAlt=i,t.elementInlineStyleWaitVar=function(e,t,n="main"){switch(n){case"main":return r(e,t);case"alt":return i(e,t);default:const o=`Invalid method: ${n}`;return console.error(o),new Error(o)}},t.elementInlineStyleHideWaitMain=c,t.elementInlineStyleHideWait=c,t.elementInlineStyleHideWaitAlt=s,t.elementInlineStyleHideWaitVar=function(e,t="display: none",n="main"){switch(n){case"main":return c(e,t);case"alt":return s(e,t);default:const o=`Invalid method: ${n}`;return console.error(o),new Error(o)}}},286:(e,t,n)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.elementInlineStyleHide=t.elementInlineStyle=t.elementInlineApplyStyle=void 0;const o=n(793);function l(e,t){return e.setAttribute("style",t),e}function r(e,t){const n=(0,o.elementSelect)(e),r=t.toString().toLowerCase().trim();if(n instanceof Element)return l(n,r);{const n=`Failed to apply inline style "${t}" to element with selector "${e}".`;return console.error(n),new Error(n)}}t.elementInlineApplyStyle=l,t.elementInlineStyle=r,t.elementInlineStyleHide=function(e,t="display: none"){return r(e,t)}},449:(e,t,n)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.elementSelectOptionAddWaitAltAll=t.elementSelectOptionAddWaitAll=void 0;const o=n(823);t.elementSelectOptionAddWaitAll=function(e){for(const{selector:t,optionText:n,optionValue:l}of e)try{(0,o.elementSelectOptionAddWait)(t,n,l)}catch(e){const o=`Failed to add option (${n}, ${l}) to element with selector "${t}": ${e.message}`;return console.error(o),new Error(o)}},t.elementSelectOptionAddWaitAltAll=function(e){for(const{selector:t,optionText:n,optionValue:l}of e)try{(0,o.elementSelectOptionAddWaitAlt)(t,n,l)}catch(e){const o=`Failed to add option (${n}, ${l}) to element with selector "${t}": ${e.message}`;return console.error(o),new Error(o)}}},823:(e,t,n)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.elementSelectOptionAddWaitAlt=t.elementSelectOptionAddWait=void 0;const o=n(625),l=n(701);t.elementSelectOptionAddWait=function(e,t,n){return(0,l.elementWait)(e).then((function(){try{(0,o.elementSelectOptionAdd)(e,t,n)}catch(o){const l=`Failed to add option (${t}, ${n}) to element with selector "${e}": ${o.message}`;return console.error(l),new Error(l)}}))},t.elementSelectOptionAddWaitAlt=function(e,t,n){return(0,l.elementWaitAlt)(e).then((function(){try{(0,o.elementSelectOptionAdd)(e,t,n)}catch(o){const l=`Failed to add alternate option (${t}, ${n}) to element with selector "${e}": ${o.message}`;return console.error(l),new Error(l)}}))}},625:(e,t,n)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.elementSelectOptionAdd=void 0;const o=n(793);t.elementSelectOptionAdd=function(e,t,n){const l=(0,o.elementSelect)(e);if(!l){const t=`Failed to find select element with selector "${e}".`;return console.error(t),new Error(t)}const r=document.createElement("option");r.text=t,r.value=n;try{l.add(r)}catch(e){const o=`Failed to add option (${t}, ${n}) to select element: ${e.message}`;return console.error(o),new Error(o)}}},793:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.elementSelect=void 0,t.elementSelect=function(e){return document.querySelector(e)}},701:(e,t,n)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.elementWaitAlt=t.elementWait=void 0;const o=n(793);t.elementWait=function(e,t=15e3){return new Promise((function(n,l){const r=(0,o.elementSelect)(e);if(r)return n(r);const i=new MutationObserver((function(t){const l=(0,o.elementSelect)(e);if(l)return i.disconnect(),n(l)}));i.observe(document.body,{childList:!0,subtree:!0}),setTimeout((function(){i.disconnect(),l(new Error(`Timeout after ${t}ms: Element ${e} not found`))}),t)}))},t.elementWaitAlt=function(e,t=100,n=15e3){return new Promise((function(l,r){const i=setInterval((()=>{const t=(0,o.elementSelect)(e);t&&(clearInterval(i),l(t))}),t);setTimeout((()=>{clearInterval(i),r(new Error(`Timeout after ${n}ms: Element ${e} not found`))}),n)}))}},141:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.eventWaitDomLoaded=void 0,t.eventWaitDomLoaded=function(e){document.addEventListener("DOMContentLoaded",e)}},666:function(e,t,n){var o=this&&this.__createBinding||(Object.create?function(e,t,n,o){void 0===o&&(o=n);var l=Object.getOwnPropertyDescriptor(t,n);l&&!("get"in l?!t.__esModule:l.writable||l.configurable)||(l={enumerable:!0,get:function(){return t[n]}}),Object.defineProperty(e,o,l)}:function(e,t,n,o){void 0===o&&(o=n),e[o]=t[n]}),l=this&&this.__exportStar||function(e,t){for(var n in e)"default"===n||Object.prototype.hasOwnProperty.call(t,n)||o(t,e,n)};Object.defineProperty(t,"__esModule",{value:!0}),l(n(453),t),l(n(450),t),l(n(286),t),l(n(620),t),l(n(82),t),l(n(88),t),l(n(625),t),l(n(823),t),l(n(449),t),l(n(793),t),l(n(701),t),l(n(141),t),l(n(987),t),l(n(533),t),l(n(200),t),l(n(735),t),l(n(412),t),l(n(650),t),l(n(471),t),l(n(289),t)},533:(e,t,n)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.scriptInjectFromTextAll=t.scriptInjectFromUrlAll=void 0;const o=n(987);t.scriptInjectFromUrlAll=function(e){for(const{url:t,location:n}of e)try{(0,o.scriptInjectFromUrl)(t,n)}catch(e){const o=`Failed to inject script from URL (${t}) to location (${n}): ${e.message}`;return console.error(o),new Error(o)}},t.scriptInjectFromTextAll=function(e){for(const{script:t,location:n}of e)try{(0,o.scriptInjectFromText)(t,n)}catch(e){const t=`Failed to inject script to location (${n}): ${e.message}`;return console.error(t),new Error(t)}}},987:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.scriptInjectFromText=t.scriptInjectFromUrl=void 0,t.scriptInjectFromUrl=function(e,t="head"){const n=document.createElement("script");switch(n.type="text/javascript",n.src=e,t){case"head":document.head.appendChild(n);break;case"body":document.body.appendChild(n);break;default:const o=`Failed to inject script from url: ${e} due to invalid injection location: ${t}`;return console.error(o),new Error(o)}},t.scriptInjectFromText=function(e,t="head"){const n=document.createElement("script");switch(n.type="text/javascript",n.innerHTML=e,t){case"head":document.head.appendChild(n);break;case"body":document.body.appendChild(n);break;default:const o=`Failed to inject script from text: ${e} due to invalid injection location: ${t}`;return console.error(o),new Error(o)}}},200:(e,t,n)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.specialElementAddGoToBottomAndTop=void 0;const o=n(471);t.specialElementAddGoToBottomAndTop=function(){const e=document.createElement("div");e.innerHTML='\n        <button onclick="document.body.scrollTop = 0; document.documentElement.scrollTop = 0;" class="fast-shortcut first-button" title="Go to top">↑</button>\n        <button onclick="document.body.scrollTop = document.body.scrollHeight; document.documentElement.scrollTop = document.body.scrollHeight;" class="fast-shortcut second-button" title="Go to bottom">↓</button>\n    ',(0,o.styleInjectFromText)("\n    .fast-shortcut {\n        width: 40px;\n        height: 40px;\n        display: block;\n        position: fixed;\n        bottom: 20px;\n        z-index: 99;\n        font-size: 25px;\n        outline: none;\n        background-color: white;\n        color: white;\n        cursor: pointer;\n        padding: 2px;\n    }\n\n    .fast-shortcut.first-button {\n        right: 30px;\n    }\n\n    .fast-shortcut.second-button {\n        right: 75px;\n    }\n    "),document.body.appendChild(e)}},735:(e,t,n)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.styleDarkModeInvertColorsAndHueRotate=t.styleDarkModeInvertColors=void 0;const o=n(471);t.styleDarkModeInvertColors=function(e=1,t="html, img, video, iframe",n=""){const l=`\n        body {\n            background: white;\n        }\n\n        ${t} {\n            filter: invert(${e}) ${n}\n        }\n    `;(0,o.styleInjectFromText)(l)},t.styleDarkModeInvertColorsAndHueRotate=function(e=1,t=180,n="html, img, video, iframe",l=""){const r=`\n        body {\n            background: white;\n        }\n\n        ${n} {\n            filter: invert(${e}) hue-rotate(${t}deg) ${l};\n        }\n    `;(0,o.styleInjectFromText)(r)}},650:(e,t,n)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.styleElementDarkModeMethod3All=t.styleElementDarkModeMethod2All=t.styleElementDarkModeMethod1All=void 0;const o=n(412);t.styleElementDarkModeMethod1All=function(e){for(const t of e)try{(0,o.styleElementDarkModeMethod1)(t)}catch(e){console.error(`Failed to apply dark mode method 1 to element with selector "${t}": ${e.message}`)}},t.styleElementDarkModeMethod2All=function(e){for(const t of e)try{(0,o.styleElementDarkModeMethod2)(t)}catch(e){console.error(`Failed to apply dark mode method 2 to element with selector "${t}": ${e.message}`)}},t.styleElementDarkModeMethod3All=function(e){for(const t of e)try{(0,o.styleElementDarkModeMethod3)(t)}catch(e){console.error(`Failed to apply dark mode method 3 to element with selector "${t}": ${e.message}`)}}},412:(e,t,n)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.styleElementDarkModeMethod3=t.styleElementDarkModeMethod2=t.styleElementDarkMode=t.styleElementDarkModeMethod1=void 0;const o=n(471);function l(e){const t=`\n        ${e}, ${e} a, ${e} span {\n            color: black !important;\n        }\n\n        ${e} {\n            background: white !important;\n        }\n\n        ${e} {\n            filter: invert(1) hue-rotate(180deg) !important;\n        }\n    `;(0,o.styleInjectFromText)(t)}t.styleElementDarkModeMethod1=l,t.styleElementDarkMode=l,t.styleElementDarkModeMethod2=function(e){const t=`\n        ${e}, ${e} a, ${e} span {\n            color: black !important;\n        }\n\n        ${e} {\n            background: white !important;\n        }\n    `;(0,o.styleInjectFromText)(t)},t.styleElementDarkModeMethod3=function(e){const t=`\n        ${e} img {\n            filter: invert(1) hue-rotate(180deg) !important;\n        }\n    `;(0,o.styleInjectFromText)(t)}},289:(e,t,n)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.styleInjectElementInvisibleAll=t.styleInjectElementTransparentAll=t.styleInjectElementHideAll=t.styleInjectFromTextAll=t.styleInjectFromUrlAll=void 0;const o=n(471);t.styleInjectFromUrlAll=function(e){for(const t of e){const{url:e,location:n}=t;(0,o.styleInjectFromUrl)(e,n)}},t.styleInjectFromTextAll=function(e){for(const t of e){const{css:e,location:n}=t;(0,o.styleInjectFromText)(e,n)}},t.styleInjectElementHideAll=function(e){for(const t of e)(0,o.styleInjectElementHide)(t)},t.styleInjectElementTransparentAll=function(e){for(const t of e)(0,o.styleInjectElementTransparent)(t)},t.styleInjectElementInvisibleAll=function(e){for(const t of e)(0,o.styleInjectElementInvisible)(t)}},471:(e,t)=>{function n(e,t="head"){const n=document.createElement("style");switch(n.type="text/css",n.innerHTML=e,t){case"head":document.head.appendChild(n);break;case"body":document.body.appendChild(n);break;default:const e=`Failed to inject style due to invalid injection location: ${t}`;return console.error(e),new Error(e)}}Object.defineProperty(t,"__esModule",{value:!0}),t.styleInjectElementInvisible=t.styleInjectElementTransparent=t.styleInjectElementHide=t.styleInjectFromText=t.styleInjectFromUrl=void 0,t.styleInjectFromUrl=function(e,t="head"){const n=document.createElement("link");switch(n.rel="stylesheet",n.type="text/css",n.href=e,t){case"head":document.head.appendChild(n);break;case"body":document.body.appendChild(n);break;default:const o=`Failed to inject style from url: ${e} due to invalid injection location: ${t}`;return console.error(o),new Error(o)}},t.styleInjectFromText=n,t.styleInjectElementHide=function(e){n(`\n        ${e} {\n            display: none !important;\n        }\n    `)},t.styleInjectElementTransparent=function(e){n(`\n        ${e} {\n            opacity: 0 !important;\n        }\n    `)},t.styleInjectElementInvisible=function(e){n(`\n        ${e} {\n            visibility: hidden !important;\n        }\n    `)}}},t={};!function n(o){var l=t[o];if(void 0!==l)return l.exports;var r=t[o]={exports:{}};return e[o].call(r.exports,r,r.exports,n),r.exports}(666)})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ([
+/* 0 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+/**
+ * Master file, reexport everything here
+ */
+// Checks
+__exportStar(__webpack_require__(1), exports);
+// Element clone
+__exportStar(__webpack_require__(2), exports);
+// Element inline style
+__exportStar(__webpack_require__(4), exports);
+__exportStar(__webpack_require__(5), exports);
+__exportStar(__webpack_require__(6), exports);
+__exportStar(__webpack_require__(8), exports);
+// Element select option
+__exportStar(__webpack_require__(9), exports);
+__exportStar(__webpack_require__(10), exports);
+__exportStar(__webpack_require__(11), exports);
+// Element selection
+__exportStar(__webpack_require__(3), exports);
+// Element wait
+__exportStar(__webpack_require__(7), exports);
+// Events
+__exportStar(__webpack_require__(12), exports);
+// Script injection
+__exportStar(__webpack_require__(13), exports);
+__exportStar(__webpack_require__(14), exports);
+// Special elements
+__exportStar(__webpack_require__(15), exports);
+// Style dark mode
+__exportStar(__webpack_require__(17), exports);
+__exportStar(__webpack_require__(18), exports);
+__exportStar(__webpack_require__(19), exports);
+// Style injection
+__exportStar(__webpack_require__(16), exports);
+__exportStar(__webpack_require__(20), exports);
+
+
+/***/ }),
+/* 1 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+/**
+ * Check functions
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.checkIsIframe = void 0;
+/**
+ * Checks if the current window is an iframe.
+ *
+ * @returns {boolean} True if the current window is an iframe, otherwise false.
+ */
+function checkIsIframe() {
+    return window !== window.parent;
+}
+exports.checkIsIframe = checkIsIframe;
+
+
+/***/ }),
+/* 2 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+/**
+ * Element clone functions
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.elementCloneToDestination = exports.elementClone = void 0;
+const userscript_element_selection_1 = __webpack_require__(3);
+/**
+ * Clones an element based on the provided selector.
+ *
+ * @param {string} selector - The CSS selector of the element to clone.
+ * @returns {Node | Error} The cloned node or an error if the element is not found.
+ */
+function elementClone(selector) {
+    const element = (0, userscript_element_selection_1.elementSelect)(selector);
+    if (element) {
+        const elementClone = element.cloneNode(true);
+        return elementClone;
+    }
+    else {
+        return new Error(`Failed to clone element with selector ${selector}`);
+    }
+}
+exports.elementClone = elementClone;
+/**
+ * Clones an element from the source selector and appends it to the destination selector.
+ *
+ * @param {string} selectorSource - The CSS selector of the element to clone.
+ * @param {string} selectorDestination - The CSS selector of the destination element.
+ * @returns {void | Error} Returns void if successful, otherwise returns an error.
+ */
+function elementCloneToDestination(selectorSource, selectorDestination) {
+    const elementSourceClone = elementClone(selectorSource);
+    if (elementSourceClone instanceof Error) {
+        console.error(elementSourceClone.message);
+        return new Error(`Failed to clone element: ${elementSourceClone.message}`);
+    }
+    const elementDestination = (0, userscript_element_selection_1.elementSelect)(selectorDestination);
+    if (!elementDestination) {
+        const errorMessage = `Destination element with selector ${selectorDestination} not found.`;
+        console.error(errorMessage);
+        return new Error(errorMessage);
+    }
+    try {
+        elementDestination.appendChild(elementSourceClone);
+    }
+    catch (error) {
+        const errorMessage = `Failed to append cloned element to destination: ${error.message}`;
+        console.error(errorMessage);
+        return new Error(errorMessage);
+    }
+}
+exports.elementCloneToDestination = elementCloneToDestination;
+
+
+/***/ }),
+/* 3 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+/**
+ * Element selection functions
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.elementSelect = void 0;
+/**
+ * Selects the first DOM element that matches the given CSS selector.
+ * @param {string} selector - A CSS selector string to match the desired element.
+ * @returns {Element | null} The first Element within the document that matches the specified selector, or null if no matches are found.
+ */
+function elementSelect(selector) {
+    const selected = document.querySelector(selector);
+    return selected;
+}
+exports.elementSelect = elementSelect;
+
+
+/***/ }),
+/* 4 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+/**
+ * Element inline style functions
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.elementInlineStyleHide = exports.elementInlineStyle = exports.elementInlineApplyStyle = void 0;
+const userscript_element_selection_1 = __webpack_require__(3);
+/**
+ * Applies the given style to the specified element.
+ *
+ * @param {Element} element - The DOM element to which the style will be applied.
+ * @param {string} style - The CSS style to apply.
+ * @returns {Element} The element with the applied style.
+ */
+function elementInlineApplyStyle(element, style) {
+    element.setAttribute('style', style);
+    return element;
+}
+exports.elementInlineApplyStyle = elementInlineApplyStyle;
+/**
+ * Applies inline styles to an element selected by a CSS selector.
+ *
+ * @param {string} selector - The CSS selector of the element.
+ * @param {string} style - The CSS style to apply.
+ * @returns {Element | Error} The styled element, or an error if the element was not found or is invalid.
+ */
+function elementInlineStyle(selector, style) {
+    const element = (0, userscript_element_selection_1.elementSelect)(selector);
+    const elementStyle = style.toString().toLowerCase().trim();
+    if (element instanceof Element) {
+        return elementInlineApplyStyle(element, elementStyle);
+    }
+    else {
+        const errorMessage = `Failed to apply inline style "${style}" to element with selector "${selector}".`;
+        console.error(errorMessage);
+        return new Error(errorMessage);
+    }
+}
+exports.elementInlineStyle = elementInlineStyle;
+/**
+ * Hides an element by applying the given style.
+ *
+ * @param {string} selector - The CSS selector of the element.
+ * @param {string} [style='display: none'] - The CSS style to apply to hide the element.
+ * @returns {Element | Error} The hidden element, or an error if the element was not found or is invalid.
+ */
+function elementInlineStyleHide(selector, style = 'display: none') {
+    return elementInlineStyle(selector, style);
+}
+exports.elementInlineStyleHide = elementInlineStyleHide;
+
+
+/***/ }),
+/* 5 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+/**
+ * Element inline style all
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.elementInlineStyleHideAll = exports.elementInlineStyleAll = void 0;
+const userscript_element_inline_style_1 = __webpack_require__(4);
+/**
+ * Applies inline styles to multiple elements based on an array of selector and style objects.
+ *
+ * @param {Array<selectorAndStyleObject>} selectorAndStyleObjectArray - Array of objects containing selectors and styles.
+ * @returns {void | Error} Returns void if successful, otherwise returns an error.
+ */
+function elementInlineStyleAll(selectorAndStyleObjectArray) {
+    for (const { selector, style } of selectorAndStyleObjectArray) {
+        try {
+            (0, userscript_element_inline_style_1.elementInlineStyle)(selector, style);
+        }
+        catch (error) {
+            const errorMessage = `Failed to apply style to element with selector ${selector}: ${error.message}`;
+            console.error(errorMessage);
+            return new Error(errorMessage);
+        }
+    }
+}
+exports.elementInlineStyleAll = elementInlineStyleAll;
+/**
+ * Hides multiple elements by applying inline styles based on an array of selector and style objects.
+ *
+ * @param {Array<selectorAndStyleObject>} selectorAndStyleObjectArray - Array of objects containing selectors and styles.
+ * @returns {void | Error} Returns void if successful, otherwise returns an error.
+ */
+function elementInlineStyleHideAll(selectorAndStyleObjectArray) {
+    for (const { selector, style } of selectorAndStyleObjectArray) {
+        try {
+            (0, userscript_element_inline_style_1.elementInlineStyleHide)(selector, style);
+        }
+        catch (error) {
+            const errorMessage = `Failed to hide element with selector ${selector}: ${error.message}`;
+            console.error(errorMessage);
+            return new Error(errorMessage);
+        }
+    }
+}
+exports.elementInlineStyleHideAll = elementInlineStyleHideAll;
+
+
+/***/ }),
+/* 6 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+/**
+ * Element inline style wait functions
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.elementInlineStyleHideWaitVar = exports.elementInlineStyleHideWaitAlt = exports.elementInlineStyleHideWait = exports.elementInlineStyleHideWaitMain = exports.elementInlineStyleWaitVar = exports.elementInlineStyleWaitAlt = exports.elementInlineStyleWait = exports.elementInlineStyleWaitMain = void 0;
+const userscript_element_inline_style_1 = __webpack_require__(4);
+const userscript_element_wait_1 = __webpack_require__(7);
+exports.elementInlineStyleWaitMain = elementInlineStyleWait;
+/**
+ * Applies inline styles to an element after waiting for it to appear.
+ *
+ * @param {string} selector - The CSS selector of the element.
+ * @param {string} style - The CSS style to apply.
+ * @returns {Promise<Element | Error | null>} A promise that resolves when the style has been applied.
+ */
+function elementInlineStyleWait(selector, style) {
+    return (0, userscript_element_wait_1.elementWait)(selector).then(function () {
+        return (0, userscript_element_inline_style_1.elementInlineStyle)(selector, style);
+    });
+}
+exports.elementInlineStyleWait = elementInlineStyleWait;
+/**
+ * Applies alternate inline styles to an element after waiting for it to appear.
+ *
+ * @param {string} selector - The CSS selector of the element.
+ * @param {string} style - The CSS style to apply.
+ * @returns {Promise<Element | Error | null>} A promise that resolves when the style has been applied.
+ */
+function elementInlineStyleWaitAlt(selector, style) {
+    return (0, userscript_element_wait_1.elementWaitAlt)(selector).then(function () {
+        return (0, userscript_element_inline_style_1.elementInlineStyle)(selector, style);
+    });
+}
+exports.elementInlineStyleWaitAlt = elementInlineStyleWaitAlt;
+/**
+ * Applies inline styles to an element after waiting for it to appear, using the specified method.
+ *
+ * @param {string} selector - The CSS selector of the element.
+ * @param {string} style - The CSS style to apply.
+ * @param {string} [method='main'] - The method to use ('main' or 'alt').
+ * @returns {Promise<Element | Error | null> | Error} A promise that resolves when the style has been applied, or an error if the method is invalid.
+ */
+function elementInlineStyleWaitVar(selector, style, method = 'main') {
+    switch (method) {
+        case 'main':
+            return elementInlineStyleWait(selector, style);
+        case 'alt':
+            return elementInlineStyleWaitAlt(selector, style);
+        default:
+            const errorMessage = `Invalid method: ${method}`;
+            console.error(errorMessage);
+            return new Error(errorMessage);
+    }
+}
+exports.elementInlineStyleWaitVar = elementInlineStyleWaitVar;
+exports.elementInlineStyleHideWaitMain = elementInlineStyleHideWait;
+/**
+ * Hides an element by applying inline styles after waiting for it to appear.
+ *
+ * @param {string} selector - The CSS selector of the element.
+ * @param {string} [style='display: none'] - The CSS style to apply.
+ * @returns {Promise<Element | Error>} A promise that resolves when the style has been applied.
+ */
+function elementInlineStyleHideWait(selector, style = 'display: none') {
+    return (0, userscript_element_wait_1.elementWait)(selector).then(function () {
+        return (0, userscript_element_inline_style_1.elementInlineStyleHide)(selector, style);
+    });
+}
+exports.elementInlineStyleHideWait = elementInlineStyleHideWait;
+/**
+ * Hides an element by applying alternate inline styles after waiting for it to appear.
+ *
+ * @param {string} selector - The CSS selector of the element.
+ * @param {string} [style='display: none'] - The CSS style to apply.
+ * @returns {Promise<Element | Error>} A promise that resolves when the style has been applied.
+ */
+function elementInlineStyleHideWaitAlt(selector, style = 'display: none') {
+    return (0, userscript_element_wait_1.elementWaitAlt)(selector).then(function () {
+        return (0, userscript_element_inline_style_1.elementInlineStyleHide)(selector, style);
+    });
+}
+exports.elementInlineStyleHideWaitAlt = elementInlineStyleHideWaitAlt;
+/**
+ * Hides an element by applying inline styles after waiting for it to appear, using the specified method.
+ *
+ * @param {string} selector - The CSS selector of the element.
+ * @param {string} [style='display: none'] - The CSS style to apply.
+ * @param {string} [method='main'] - The method to use ('main' or 'alt').
+ * @returns {Promise<void> | Error} A promise that resolves when the style has been applied, or an error if the method is invalid.
+ */
+function elementInlineStyleHideWaitVar(selector, style = 'display: none', method = 'main') {
+    switch (method) {
+        case 'main':
+            return elementInlineStyleHideWait(selector, style);
+        case 'alt':
+            return elementInlineStyleHideWaitAlt(selector, style);
+        default:
+            const errorMessage = `Invalid method: ${method}`;
+            console.error(errorMessage);
+            return new Error(errorMessage);
+    }
+}
+exports.elementInlineStyleHideWaitVar = elementInlineStyleHideWaitVar;
+
+
+/***/ }),
+/* 7 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+/**
+ * Element wait functions
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.elementWaitAlt = exports.elementWait = void 0;
+const userscript_element_selection_1 = __webpack_require__(3);
+/**
+ * Wait for an element to appear in the DOM.
+ *
+ * @param {string} selector - CSS selector of the target element.
+ * @param {number} [timeout=15000] - Maximum time to wait in milliseconds (default is 15 seconds).
+ * @returns {Promise<Element>} Promise that resolves with the element if found, or rejects with an error if the timeout is reached.
+ */
+function elementWait(selector, timeout = 15000) {
+    return new Promise(function (resolve, reject) {
+        const element = (0, userscript_element_selection_1.elementSelect)(selector);
+        if (element) {
+            return resolve(element);
+        }
+        const observer = new MutationObserver(function (mutations) {
+            const element = (0, userscript_element_selection_1.elementSelect)(selector);
+            if (element) {
+                observer.disconnect();
+                return resolve(element);
+            }
+        });
+        const observerOptions = {
+            childList: true,
+            subtree: true
+        };
+        observer.observe(document.body, observerOptions);
+        setTimeout(function () {
+            observer.disconnect();
+            reject(new Error(`Timeout after ${timeout}ms: Element ${selector} not found`));
+        }, timeout);
+    });
+}
+exports.elementWait = elementWait;
+/**
+ * Wait for an element to appear in the DOM by periodically checking at a specified interval.
+ *
+ * @param {string} selector - CSS selector of the target element.
+ * @param {number} [interval=100] - Interval in milliseconds to check for the element (default is 100ms).
+ * @param {number} [timeout=15000] - Maximum time to wait in milliseconds (default is 15 seconds).
+ * @returns {Promise<Element>} Promise that resolves with the element if found, or rejects with an error if the timeout is reached.
+ */
+function elementWaitAlt(selector, interval = 100, timeout = 15000) {
+    return new Promise(function (resolve, reject) {
+        const elementChecker = setInterval(() => {
+            const element = (0, userscript_element_selection_1.elementSelect)(selector);
+            if (element) {
+                clearInterval(elementChecker);
+                resolve(element);
+            }
+        }, interval);
+        setTimeout(() => {
+            clearInterval(elementChecker);
+            reject(new Error(`Timeout after ${timeout}ms: Element ${selector} not found`));
+        }, timeout);
+    });
+}
+exports.elementWaitAlt = elementWaitAlt;
+
+
+/***/ }),
+/* 8 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+/**
+ * Element inline style wait all functions
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.elementInlineStyleWaitVarAll = exports.elementInlineStyleWaitAltAll = exports.elementInlineStyleWaitAll = void 0;
+const userscript_element_inline_style_wait_1 = __webpack_require__(6);
+/**
+ * Applies inline styles to multiple elements with a wait function.
+ *
+ * @param {Array<selectorAndStyleObject>} selectorAndStyleObjectArray - Array of objects containing selectors and styles.
+ * @returns {void | Error} Returns void if successful, otherwise returns an error.
+ */
+function elementInlineStyleWaitAll(selectorAndStyleObjectArray) {
+    for (const selectorObject of selectorAndStyleObjectArray) {
+        const { selector, style } = selectorObject;
+        try {
+            (0, userscript_element_inline_style_wait_1.elementInlineStyleHideWait)(selector, style);
+        }
+        catch (error) {
+            const errorMessage = `Failed to apply wait style to element with selector ${selector}: ${error.message}`;
+            console.error(errorMessage);
+            return new Error(errorMessage);
+        }
+    }
+}
+exports.elementInlineStyleWaitAll = elementInlineStyleWaitAll;
+/**
+ * Applies alternate inline styles to multiple elements with a wait function.
+ *
+ * @param {Array<selectorAndStyleObject>} selectorAndStyleObjectArray - Array of objects containing selectors and styles.
+ * @returns {void | Error} Returns void if successful, otherwise returns an error.
+ */
+function elementInlineStyleWaitAltAll(selectorAndStyleObjectArray) {
+    for (const selectorObject of selectorAndStyleObjectArray) {
+        const { selector, style } = selectorObject;
+        try {
+            (0, userscript_element_inline_style_wait_1.elementInlineStyleHideWaitAlt)(selector, style);
+        }
+        catch (error) {
+            const errorMessage = `Failed to apply alternate wait style to element with selector ${selector}: ${error.message}`;
+            console.error(errorMessage);
+            return new Error(errorMessage);
+        }
+    }
+}
+exports.elementInlineStyleWaitAltAll = elementInlineStyleWaitAltAll;
+/**
+ * Applies inline styles to multiple elements with a variable wait function.
+ *
+ * @param {Array<selectorStyleAndMethodObject>} selectorStyleAndMethodObjectArray - Array of objects containing selectors, styles, and methods.
+ * @returns {void | Error} Returns void if successful, otherwise returns an error.
+ */
+function elementInlineStyleWaitVarAll(selectorStyleAndMethodObjectArray) {
+    for (const selectorObject of selectorStyleAndMethodObjectArray) {
+        const { selector, style, method } = selectorObject;
+        try {
+            (0, userscript_element_inline_style_wait_1.elementInlineStyleHideWaitVar)(selector, style, method);
+        }
+        catch (error) {
+            const errorMessage = `Failed to apply variable wait style to element with selector ${selector}, method ${method}: ${error.message}`;
+            console.error(errorMessage);
+            return new Error(errorMessage);
+        }
+    }
+}
+exports.elementInlineStyleWaitVarAll = elementInlineStyleWaitVarAll;
+
+
+/***/ }),
+/* 9 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+/**
+ * Element select option
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.elementSelectOptionAdd = void 0;
+const userscript_element_selection_1 = __webpack_require__(3);
+/**
+ * Adds an option to a select element.
+ *
+ * @param {string} selector - The CSS selector of the select element.
+ * @param {string} optionText - The text of the option to add.
+ * @param {string} optionValue - The value of the option to add.
+ * @returns {void | Error} Returns void if successful, otherwise returns an error.
+ */
+function elementSelectOptionAdd(selector, optionText, optionValue) {
+    const element = (0, userscript_element_selection_1.elementSelect)(selector);
+    if (!element) {
+        const errorMessage = `Failed to find select element with selector "${selector}".`;
+        console.error(errorMessage);
+        return new Error(errorMessage);
+    }
+    const option = document.createElement('option');
+    option.text = optionText;
+    option.value = optionValue;
+    try {
+        element.add(option);
+    }
+    catch (error) {
+        const errorMessage = `Failed to add option (${optionText}, ${optionValue}) to select element: ${error.message}`;
+        console.error(errorMessage);
+        return new Error(errorMessage);
+    }
+}
+exports.elementSelectOptionAdd = elementSelectOptionAdd;
+
+
+/***/ }),
+/* 10 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+/**
+ * Element select option wait
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.elementSelectOptionAddWaitAlt = exports.elementSelectOptionAddWait = void 0;
+const userscript_element_select_option_1 = __webpack_require__(9);
+const userscript_element_wait_1 = __webpack_require__(7);
+/**
+ * Adds an option to a select element after waiting for it to appear.
+ *
+ * @param {string} selector - The CSS selector of the select element.
+ * @param {string} optionText - The text of the option to add.
+ * @param {string} optionValue - The value of the option to add.
+ * @returns {Promise<void | Error>} A promise that resolves when the option has been added.
+ */
+function elementSelectOptionAddWait(selector, optionText, optionValue) {
+    return (0, userscript_element_wait_1.elementWait)(selector).then(function () {
+        try {
+            (0, userscript_element_select_option_1.elementSelectOptionAdd)(selector, optionText, optionValue);
+        }
+        catch (error) {
+            const errorMessage = `Failed to add option (${optionText}, ${optionValue}) to element with selector "${selector}": ${error.message}`;
+            console.error(errorMessage);
+            return new Error(errorMessage);
+        }
+    });
+}
+exports.elementSelectOptionAddWait = elementSelectOptionAddWait;
+/**
+ * Adds an option to a select element after waiting for it to appear. alternate method
+ *
+ * @param {string} selector - The CSS selector of the select element.
+ * @param {string} optionText - The text of the option to add.
+ * @param {string} optionValue - The value of the option to add.
+ * @returns {Promise<void | Error>} A promise that resolves when the option has been added.
+ */
+function elementSelectOptionAddWaitAlt(selector, optionText, optionValue) {
+    return (0, userscript_element_wait_1.elementWaitAlt)(selector).then(function () {
+        try {
+            (0, userscript_element_select_option_1.elementSelectOptionAdd)(selector, optionText, optionValue);
+        }
+        catch (error) {
+            const errorMessage = `Failed to add alternate option (${optionText}, ${optionValue}) to element with selector "${selector}": ${error.message}`;
+            console.error(errorMessage);
+            return new Error(errorMessage);
+        }
+    });
+}
+exports.elementSelectOptionAddWaitAlt = elementSelectOptionAddWaitAlt;
+
+
+/***/ }),
+/* 11 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+/**
+ * Element select option wait all
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.elementSelectOptionAddWaitAltAll = exports.elementSelectOptionAddWaitAll = void 0;
+const userscript_element_select_option_wait_1 = __webpack_require__(10);
+/**
+ * Adds options to select elements after waiting for them to appear.
+ *
+ * @param {Array<selectorOptionTextAndValueObject>} selectorOptionTextAndValueObjectArray - Array of objects containing selectors, option text, and option value.
+ * @returns {void | Error} Returns void if successful, otherwise returns an error.
+ */
+function elementSelectOptionAddWaitAll(selectorOptionTextAndValueObjectArray) {
+    for (const { selector, optionText, optionValue } of selectorOptionTextAndValueObjectArray) {
+        try {
+            (0, userscript_element_select_option_wait_1.elementSelectOptionAddWait)(selector, optionText, optionValue);
+        }
+        catch (error) {
+            const errorMessage = `Failed to add option (${optionText}, ${optionValue}) to element with selector "${selector}": ${error.message}`;
+            console.error(errorMessage);
+            return new Error(errorMessage);
+        }
+    }
+}
+exports.elementSelectOptionAddWaitAll = elementSelectOptionAddWaitAll;
+/**
+ * Adds options to select elements after waiting for them to appear. alternate method
+ *
+ * @param {Array<selectorOptionTextAndValueObject>} selectorOptionTextAndValueObjectArray - Array of objects containing selectors, option text, and option value.
+ * @returns {void | Error} Returns void if successful, otherwise returns an error.
+ */
+function elementSelectOptionAddWaitAltAll(selectorOptionTextAndValueObjectArray) {
+    for (const { selector, optionText, optionValue } of selectorOptionTextAndValueObjectArray) {
+        try {
+            (0, userscript_element_select_option_wait_1.elementSelectOptionAddWaitAlt)(selector, optionText, optionValue);
+        }
+        catch (error) {
+            const errorMessage = `Failed to add option (${optionText}, ${optionValue}) to element with selector "${selector}": ${error.message}`;
+            console.error(errorMessage);
+            return new Error(errorMessage);
+        }
+    }
+}
+exports.elementSelectOptionAddWaitAltAll = elementSelectOptionAddWaitAltAll;
+
+
+/***/ }),
+/* 12 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+/**
+ * Event functions
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.eventWaitDomLoaded = void 0;
+/**
+ * Wait for the DOM content to be loaded before executing the callback.
+ *
+ * @param {Function} callback - The callback function to execute once the DOM content is loaded.
+ * @returns {void}
+ */
+function eventWaitDomLoaded(callback) {
+    document.addEventListener('DOMContentLoaded', callback);
+}
+exports.eventWaitDomLoaded = eventWaitDomLoaded;
+
+
+/***/ }),
+/* 13 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+/**
+ * Script injection functions
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.scriptInjectFromText = exports.scriptInjectFromUrl = void 0;
+/**
+ * Injects a script from a URL into the specified location in the DOM.
+ *
+ * @param {string} url - The URL of the script to inject.
+ * @param {string} [location='head'] - The location to inject the script ('head' or 'body').
+ * @returns {void | Error} Returns void if successful, otherwise returns an error.
+ */
+function scriptInjectFromUrl(url, location = 'head') {
+    const scriptElement = document.createElement('script');
+    scriptElement.type = 'text/javascript';
+    scriptElement.src = url;
+    switch (location) {
+        case 'head':
+            document.head.appendChild(scriptElement);
+            break;
+        case 'body':
+            document.body.appendChild(scriptElement);
+            break;
+        default:
+            const errorMessage = `Failed to inject script from url: ${url} due to invalid injection location: ${location}`;
+            console.error(errorMessage);
+            return new Error(errorMessage);
+    }
+}
+exports.scriptInjectFromUrl = scriptInjectFromUrl;
+/**
+ * Injects a script from text into the specified location in the DOM.
+ *
+ * @param {string} script - The script content to inject.
+ * @param {string} [location='head'] - The location to inject the script ('head' or 'body').
+ * @returns {void | Error} Returns void if successful, otherwise returns an error.
+ */
+function scriptInjectFromText(script, location = 'head') {
+    const scriptElement = document.createElement('script');
+    scriptElement.type = 'text/javascript';
+    scriptElement.innerHTML = script;
+    switch (location) {
+        case 'head':
+            document.head.appendChild(scriptElement);
+            break;
+        case 'body':
+            document.body.appendChild(scriptElement);
+            break;
+        default:
+            const errorMessage = `Failed to inject script from text: ${script} due to invalid injection location: ${location}`;
+            console.error(errorMessage);
+            return new Error(errorMessage);
+    }
+}
+exports.scriptInjectFromText = scriptInjectFromText;
+
+
+/***/ }),
+/* 14 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+/**
+ * Script injection all functions
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.scriptInjectFromTextAll = exports.scriptInjectFromUrlAll = void 0;
+const userscript_script_injection_1 = __webpack_require__(13);
+/**
+ * Injects scripts from URLs into specified locations for an array of URL and location objects.
+ *
+ * @param {Array<urlAndLocationObject>} urlAndLocationObjectArray - Array of objects containing URLs and locations.
+ * @returns {void | Error} Returns void if successful, otherwise returns an error.
+ */
+function scriptInjectFromUrlAll(urlAndLocationObjectArray) {
+    for (const { url, location } of urlAndLocationObjectArray) {
+        try {
+            (0, userscript_script_injection_1.scriptInjectFromUrl)(url, location);
+        }
+        catch (error) {
+            const errorMessage = `Failed to inject script from URL (${url}) to location (${location}): ${error.message}`;
+            console.error(errorMessage);
+            return new Error(errorMessage);
+        }
+    }
+}
+exports.scriptInjectFromUrlAll = scriptInjectFromUrlAll;
+/**
+ * Injects scripts from text into specified locations for an array of script and location objects.
+ *
+ * @param {Array<scriptAndLocationObject>} scriptAndLocationObjectArray - Array of objects containing scripts and locations.
+ * @returns {void | Error} Returns void if successful, otherwise returns an error.
+ */
+function scriptInjectFromTextAll(scriptAndLocationObjectArray) {
+    for (const { script, location } of scriptAndLocationObjectArray) {
+        try {
+            (0, userscript_script_injection_1.scriptInjectFromText)(script, location);
+        }
+        catch (error) {
+            const errorMessage = `Failed to inject script to location (${location}): ${error.message}`;
+            console.error(errorMessage);
+            return new Error(errorMessage);
+        }
+    }
+}
+exports.scriptInjectFromTextAll = scriptInjectFromTextAll;
+
+
+/***/ }),
+/* 15 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+/**
+ * Special elements
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.specialElementAddGoToBottomAndTop = void 0;
+const userscript_style_injection_1 = __webpack_require__(16);
+/**
+ * Adds "Go to Bottom" and "Go to Top" buttons to the webpage with corresponding styles.
+ *
+ * @returns {void}
+ */
+function specialElementAddGoToBottomAndTop() {
+    const styleCss = `
+    .fast-shortcut {
+        width: 40px;
+        height: 40px;
+        display: block;
+        position: fixed;
+        bottom: 20px;
+        z-index: 99;
+        font-size: 25px;
+        outline: none;
+        background-color: white;
+        color: white;
+        cursor: pointer;
+        padding: 2px;
+    }
+
+    .fast-shortcut.first-button {
+        right: 30px;
+    }
+
+    .fast-shortcut.second-button {
+        right: 75px;
+    }
+    `;
+    const button = document.createElement('div');
+    button.innerHTML = `
+        <button onclick="document.body.scrollTop = 0; document.documentElement.scrollTop = 0;" class="fast-shortcut first-button" title="Go to top">↑</button>
+        <button onclick="document.body.scrollTop = document.body.scrollHeight; document.documentElement.scrollTop = document.body.scrollHeight;" class="fast-shortcut second-button" title="Go to bottom">↓</button>
+    `;
+    (0, userscript_style_injection_1.styleInjectFromText)(styleCss);
+    document.body.appendChild(button);
+}
+exports.specialElementAddGoToBottomAndTop = specialElementAddGoToBottomAndTop;
+
+
+/***/ }),
+/* 16 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+/**
+ * Style injection functions
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.styleInjectElementInvisible = exports.styleInjectElementTransparent = exports.styleInjectElementHide = exports.styleInjectFromText = exports.styleInjectFromUrl = void 0;
+/**
+ * Injects a CSS stylesheet from a URL into the specified location in the DOM.
+ *
+ * @param {string} url - The URL of the CSS file.
+ * @param {string} [location='head'] - The location to inject the CSS ('head' or 'body').
+ * @returns {void | Error} Returns void if successful, otherwise returns an error.
+ */
+function styleInjectFromUrl(url, location = 'head') {
+    const styleElement = document.createElement('link');
+    styleElement.rel = 'stylesheet';
+    styleElement.type = 'text/css';
+    styleElement.href = url;
+    switch (location) {
+        case 'head':
+            document.head.appendChild(styleElement);
+            break;
+        case 'body':
+            document.body.appendChild(styleElement);
+            break;
+        default:
+            const errorMessage = `Failed to inject style from url: ${url} due to invalid injection location: ${location}`;
+            console.error(errorMessage);
+            return new Error(errorMessage);
+    }
+}
+exports.styleInjectFromUrl = styleInjectFromUrl;
+/**
+ * Injects CSS styles from text into the specified location in the DOM.
+ *
+ * @param {string} styleCss - The CSS text to inject.
+ * @param {string} [location='head'] - The location to inject the CSS ('head' or 'body').
+ * @returns {void | Error} Returns void if successful, otherwise returns an error.
+ */
+function styleInjectFromText(styleCss, location = 'head') {
+    const styleElement = document.createElement('style');
+    styleElement.type = 'text/css';
+    styleElement.innerHTML = styleCss;
+    switch (location) {
+        case 'head':
+            document.head.appendChild(styleElement);
+            break;
+        case 'body':
+            document.body.appendChild(styleElement);
+            break;
+        default:
+            const errorMessage = `Failed to inject style due to invalid injection location: ${location}`;
+            console.error(errorMessage);
+            return new Error(errorMessage);
+    }
+}
+exports.styleInjectFromText = styleInjectFromText;
+/**
+ * Hides elements specified by a CSS selector.
+ *
+ * @param {string} selector - The CSS selector of the elements to hide.
+ * @returns {void}
+ */
+function styleInjectElementHide(selector) {
+    const styleCss = `
+        ${selector} {
+            display: none !important;
+        }
+    `;
+    styleInjectFromText(styleCss);
+}
+exports.styleInjectElementHide = styleInjectElementHide;
+/**
+ * Makes elements specified by a CSS selector transparent.
+ *
+ * @param {string} selector - The CSS selector of the elements to make transparent.
+ * @returns {void}
+ */
+function styleInjectElementTransparent(selector) {
+    const styleCss = `
+        ${selector} {
+            opacity: 0 !important;
+        }
+    `;
+    styleInjectFromText(styleCss);
+}
+exports.styleInjectElementTransparent = styleInjectElementTransparent;
+/**
+ * Makes elements specified by a CSS selector invisible.
+ *
+ * @param {string} selector - The CSS selector of the elements to make invisible.
+ * @returns {void}
+ */
+function styleInjectElementInvisible(selector) {
+    const styleCss = `
+        ${selector} {
+            visibility: hidden !important;
+        }
+    `;
+    styleInjectFromText(styleCss);
+}
+exports.styleInjectElementInvisible = styleInjectElementInvisible;
+
+
+/***/ }),
+/* 17 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+/**
+ *  Style dark mode
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.styleDarkModeInvertColorsAndHueRotate = exports.styleDarkModeInvertColors = void 0;
+const userscript_style_injection_1 = __webpack_require__(16);
+/**
+ * Applies a CSS filter to invert colors for the specified tags.
+ *
+ * @param {number} [inversion=1] - The amount of inversion to apply (0 to 1).
+ * @param {string} [tags='html, img, video, iframe'] - The tags to apply the filter to.
+ * @param {string} [additionalfilters=''] - Additional CSS filters to apply.
+ * @returns {void}
+ */
+function styleDarkModeInvertColors(inversion = 1, tags = 'html, img, video, iframe', additionalfilters = '') {
+    const styleCss = `
+        body {
+            background: white;
+        }
+
+        ${tags} {
+            filter: invert(${inversion}) ${additionalfilters}
+        }
+    `;
+    (0, userscript_style_injection_1.styleInjectFromText)(styleCss);
+}
+exports.styleDarkModeInvertColors = styleDarkModeInvertColors;
+/**
+ * Applies a CSS filter to invert colors and rotate hues for the specified tags.
+ *
+ * @param {number} [inversion=1] - The amount of inversion to apply (0 to 1).
+ * @param {number} [rotation=180] - The degree of hue rotation to apply.
+ * @param {string} [tags='html, img, video, iframe'] - The tags to apply the filter to.
+ * @param {string} [additionalfilters=''] - Additional CSS filters to apply.
+ * @returns {void}
+ */
+function styleDarkModeInvertColorsAndHueRotate(inversion = 1, rotation = 180, tags = 'html, img, video, iframe', additionalfilters = '') {
+    const styleCss = `
+        body {
+            background: white;
+        }
+
+        ${tags} {
+            filter: invert(${inversion}) hue-rotate(${rotation}deg) ${additionalfilters};
+        }
+    `;
+    (0, userscript_style_injection_1.styleInjectFromText)(styleCss);
+}
+exports.styleDarkModeInvertColorsAndHueRotate = styleDarkModeInvertColorsAndHueRotate;
+
+
+/***/ }),
+/* 18 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+/**
+ * Style element dark mode
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.styleElementDarkModeMethod3 = exports.styleElementDarkModeMethod2 = exports.styleElementDarkMode = exports.styleElementDarkModeMethod1 = void 0;
+const userscript_style_injection_1 = __webpack_require__(16);
+/**
+ * Applies dark mode styling using method 1 to the specified selector.
+ *
+ * @param {string} selector - The CSS selector of the element to style.
+ * @returns {void}
+ */
+function styleElementDarkModeMethod1(selector) {
+    const styleCss = `
+        ${selector}, ${selector} a, ${selector} span {
+            color: black !important;
+        }
+
+        ${selector} {
+            background: white !important;
+        }
+
+        ${selector} {
+            filter: invert(1) hue-rotate(180deg) !important;
+        }
+    `;
+    (0, userscript_style_injection_1.styleInjectFromText)(styleCss);
+}
+exports.styleElementDarkModeMethod1 = styleElementDarkModeMethod1;
+exports.styleElementDarkMode = styleElementDarkModeMethod1;
+/**
+ * Applies dark mode styling using method 2 to the specified selector.
+ *
+ * @param {string} selector - The CSS selector of the element to style.
+ * @returns {void}
+ */
+function styleElementDarkModeMethod2(selector) {
+    const styleCss = `
+        ${selector}, ${selector} a, ${selector} span {
+            color: black !important;
+        }
+
+        ${selector} {
+            background: white !important;
+        }
+    `;
+    (0, userscript_style_injection_1.styleInjectFromText)(styleCss);
+}
+exports.styleElementDarkModeMethod2 = styleElementDarkModeMethod2;
+/**
+ * Applies dark mode styling using method 3 to the specified selector.
+ *
+ * @param {string} selector - The CSS selector of the element to style.
+ * @returns {void}
+ */
+function styleElementDarkModeMethod3(selector) {
+    const styleCss = `
+        ${selector} img {
+            filter: invert(1) hue-rotate(180deg) !important;
+        }
+    `;
+    (0, userscript_style_injection_1.styleInjectFromText)(styleCss);
+}
+exports.styleElementDarkModeMethod3 = styleElementDarkModeMethod3;
+
+
+/***/ }),
+/* 19 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+/**
+ * Style element dark mode all
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.styleElementDarkModeMethod3All = exports.styleElementDarkModeMethod2All = exports.styleElementDarkModeMethod1All = void 0;
+const userscript_style_element_darkmode_1 = __webpack_require__(18);
+/**
+ * Applies dark mode styling using method 1 to all elements matching the selectors in the array.
+ *
+ * @param {Array<string>} selectorArray - Array of CSS selectors.
+ * @returns {void}
+ */
+function styleElementDarkModeMethod1All(selectorArray) {
+    for (const selector of selectorArray) {
+        try {
+            (0, userscript_style_element_darkmode_1.styleElementDarkModeMethod1)(selector);
+        }
+        catch (error) {
+            console.error(`Failed to apply dark mode method 1 to element with selector "${selector}": ${error.message}`);
+        }
+    }
+}
+exports.styleElementDarkModeMethod1All = styleElementDarkModeMethod1All;
+/**
+ * Applies dark mode styling using method 2 to all elements matching the selectors in the array.
+ *
+ * @param {Array<string>} selectorArray - Array of CSS selectors.
+ * @returns {void}
+ */
+function styleElementDarkModeMethod2All(selectorArray) {
+    for (const selector of selectorArray) {
+        try {
+            (0, userscript_style_element_darkmode_1.styleElementDarkModeMethod2)(selector);
+        }
+        catch (error) {
+            console.error(`Failed to apply dark mode method 2 to element with selector "${selector}": ${error.message}`);
+        }
+    }
+}
+exports.styleElementDarkModeMethod2All = styleElementDarkModeMethod2All;
+/**
+ * Applies dark mode styling using method 3 to all elements matching the selectors in the array.
+ *
+ * @param {Array<string>} selectorArray - Array of CSS selectors.
+ * @returns {void}
+ */
+function styleElementDarkModeMethod3All(selectorArray) {
+    for (const selector of selectorArray) {
+        try {
+            (0, userscript_style_element_darkmode_1.styleElementDarkModeMethod3)(selector);
+        }
+        catch (error) {
+            console.error(`Failed to apply dark mode method 3 to element with selector "${selector}": ${error.message}`);
+        }
+    }
+}
+exports.styleElementDarkModeMethod3All = styleElementDarkModeMethod3All;
+
+
+/***/ }),
+/* 20 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+/**
+ * Style injection all functions
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.styleInjectElementInvisibleAll = exports.styleInjectElementTransparentAll = exports.styleInjectElementHideAll = exports.styleInjectFromTextAll = exports.styleInjectFromUrlAll = void 0;
+const userscript_style_injection_1 = __webpack_require__(16);
+/**
+ * Injects CSS styles from URLs into specified locations for an array of URL and location objects.
+ *
+ * @param {Array<styleUrlAndLocationObject>} styleUrlAndLocationObjectArray - Array of objects containing URLs and locations.
+ * @returns {void}
+ */
+function styleInjectFromUrlAll(styleUrlAndLocationObjectArray) {
+    for (const styleObject of styleUrlAndLocationObjectArray) {
+        const { url, location } = styleObject;
+        (0, userscript_style_injection_1.styleInjectFromUrl)(url, location);
+    }
+}
+exports.styleInjectFromUrlAll = styleInjectFromUrlAll;
+/**
+ * Injects CSS styles from text into specified locations for an array of CSS and location objects.
+ *
+ * @param {Array<styleCssAndLocationObject>} styleCssAndLocationObjectArray - Array of objects containing CSS text and locations.
+ * @returns {void}
+ */
+function styleInjectFromTextAll(styleCssAndLocationObjectArray) {
+    for (const styleObject of styleCssAndLocationObjectArray) {
+        const { css, location } = styleObject;
+        (0, userscript_style_injection_1.styleInjectFromText)(css, location);
+    }
+}
+exports.styleInjectFromTextAll = styleInjectFromTextAll;
+/**
+ * Hides elements specified by an array of CSS selectors.
+ *
+ * @param {Array<string>} selectorArray - Array of CSS selectors.
+ * @returns {void}
+ */
+function styleInjectElementHideAll(selectorArray) {
+    for (const selector of selectorArray) {
+        (0, userscript_style_injection_1.styleInjectElementHide)(selector);
+    }
+}
+exports.styleInjectElementHideAll = styleInjectElementHideAll;
+/**
+ * Makes elements specified by an array of CSS selectors transparent.
+ *
+ * @param {Array<string>} selectorArray - Array of CSS selectors.
+ * @returns {void}
+ */
+function styleInjectElementTransparentAll(selectorArray) {
+    for (const selector of selectorArray) {
+        (0, userscript_style_injection_1.styleInjectElementTransparent)(selector);
+    }
+}
+exports.styleInjectElementTransparentAll = styleInjectElementTransparentAll;
+/**
+ * Makes elements specified by an array of CSS selectors invisible.
+ *
+ * @param {Array<string>} selectorArray - Array of CSS selectors.
+ * @returns {void}
+ */
+function styleInjectElementInvisibleAll(selectorArray) {
+    for (const selector of selectorArray) {
+        (0, userscript_style_injection_1.styleInjectElementInvisible)(selector);
+    }
+}
+exports.styleInjectElementInvisibleAll = styleInjectElementInvisibleAll;
+
+
+/***/ })
+/******/ 	]);
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__(0);
+/******/ 	
+/******/ })()
+;
