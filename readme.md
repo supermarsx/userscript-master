@@ -7,7 +7,7 @@ This is an auxiliary library designed to be used with other userscripts. It prov
 To use this library, include it in your userscript by adding the following lines to your script's metadata:
 
 ```javascript
-// @require  https://path-to-your-library.js
+// @require  https://raw.githubusercontent.com/supermarsx/userscript-master/main/dist/userscript-master.js
 ```
 
 ## Usage Examples
