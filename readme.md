@@ -1,4 +1,4 @@
-# Auxiliary Userscript Library
+# Master Userscript Library
 
 This is an auxiliary library designed to be used with other userscripts. It provides various utility functions to enhance and simplify the development of userscripts.
 
