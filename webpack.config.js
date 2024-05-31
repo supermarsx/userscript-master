@@ -27,6 +27,7 @@ module.exports = {
   },
   output: {
     iife: false,
+    clean: true,
     filename: 'userscript-master.js',
     path: path.resolve(__dirname, 'dist'),
     library: {
