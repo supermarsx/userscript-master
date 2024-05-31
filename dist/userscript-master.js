@@ -1,4 +1,3 @@
-var master;
 /******/ "use strict";
 /******/ var __webpack_modules__ = ([
 /* 0 */
@@ -1259,5 +1258,5 @@ exports.styleInjectElementInvisibleAll = styleInjectElementInvisibleAll;
 /******/ // Load entry module and return exports
 /******/ // This entry module is referenced by other modules so it can't be inlined
 /******/ var __webpack_exports__ = __webpack_require__(0);
-/******/ master = __webpack_exports__;
+/******/ window.master = __webpack_exports__;
 /******/ 
