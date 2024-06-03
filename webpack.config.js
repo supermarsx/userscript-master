@@ -30,15 +30,16 @@ module.exports = {
     clean: true,
     filename: 'userscript-master.js',
     path: path.resolve(__dirname, 'dist'),
+    scriptType: 'text/javascript',
     library: {
       name: 'master',
-      type: 'window'
+      type: 'assign'
     }
   },
   optimization: {
     usedExports: true,
   },
-  mode: 'none',
+  mode: 'production',
   watch: true,
   watchOptions: {
     aggregateTimeout: 200,
